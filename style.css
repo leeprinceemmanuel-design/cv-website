@@ -1,0 +1,112 @@
+/* Color and type settings used across the page */
+:root {
+  --ink: #16213A;      /* main text */
+  --muted: #5A6477;    /* secondary text */
+  --paper: #F5F7FA;    /* page background */
+  --cobalt: #2B55D6;   /* main accent */
+  --teal: #0F8577;     /* second accent (dates) */
+  --line: #D6DCE6;     /* thin dividers */
+  --head: "Archivo", "Arial Narrow", Arial, sans-serif;
+  --body: "Source Sans 3", "Segoe UI", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+a { color: var(--cobalt); }
+a:focus-visible { outline: 3px solid var(--cobalt); outline-offset: 3px; }
+
+/* Hero: the big condensed name is the one bold element on the page */
+.hero {
+  background: #FFFFFF;
+  border-left: 14px solid var(--cobalt);
+  border-bottom: 1px solid var(--line);
+}
+.hero-inner {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 4.5rem 1.5rem 3rem;
+}
+.name {
+  font-family: var(--head);
+  font-weight: 800;
+  font-stretch: 70%;              /* narrow letters so the name reads big but fits */
+  font-size: clamp(3rem, 11vw, 6.75rem);
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  margin: 0 0 1.25rem;
+}
+.role {
+  font-family: var(--head);
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: var(--cobalt);
+  margin: 0 0 1rem;
+}
+.intro { max-width: 60ch; margin: 0 0 1.5rem; }
+.contact {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.75rem;
+  color: var(--muted);
+}
+
+/* Content sections */
+main { max-width: 920px; margin: 0 auto; padding: 1rem 1.5rem 3rem; }
+.block {
+  display: grid;
+  grid-template-columns: 11rem 1fr;   /* heading on the left, content on the right */
+  gap: 1.5rem;
+  padding: 2.25rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.block h2 {
+  font-family: var(--head);
+  font-weight: 800;
+  font-stretch: 85%;
+  font-size: 1.35rem;
+  margin: 0;
+}
+h3 { font-family: var(--head); font-weight: 500; font-size: 1.15rem; margin: 0 0 0.2rem; }
+.block p { margin: 0; max-width: 62ch; }
+
+/* Education is a real sequence, so it gets a timeline */
+.timeline { list-style: none; margin: 0; padding: 0 0 0 1.25rem; border-left: 2px solid var(--line); }
+.timeline li { position: relative; padding-bottom: 1.5rem; }
+.timeline li:last-child { padding-bottom: 0; }
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: calc(-1.25rem - 7px);
+  top: 0.45rem;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--teal);
+}
+.when { display: block; font-size: 0.95rem; font-weight: 600; color: var(--teal); }
+.timeline p, .project p { color: var(--muted); }
+
+.skill-groups { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem 2rem; }
+.project { padding-bottom: 1.25rem; }
+.project:last-child { padding-bottom: 0; }
+
+.foot { max-width: 920px; margin: 0 auto; padding: 1.5rem; color: var(--muted); font-size: 0.9rem; }
+
+/* Phones: stack headings above content */
+@media (max-width: 680px) {
+  .hero { border-left-width: 8px; }
+  .hero-inner { padding-top: 3rem; }
+  .block { grid-template-columns: 1fr; gap: 0.75rem; }
+  .skill-groups { grid-template-columns: 1fr; }
+}
